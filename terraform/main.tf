@@ -4,7 +4,6 @@ module "network" {
   project_id   = var.project_id
   region       = var.region
 
-
   subnets = [
     {
       name                     = "management-subnet"
@@ -25,4 +24,9 @@ module "network" {
       private_ip_google_access = true
     }
   ]
+}
+module "firewall" {
+  source       = "./modules/firewall"
+  project_id   = var.project_id
+  network_name = module.network.network_name
 }

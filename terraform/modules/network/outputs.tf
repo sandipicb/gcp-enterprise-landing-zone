@@ -3,7 +3,8 @@ output "network_id" {
 }
 
 output "network_name" {
-  value = google_compute_network.vpc.name
+  description = "Name of the VPC network"
+  value       = google_compute_network.vpc.name
 }
 
 output "subnets" {
