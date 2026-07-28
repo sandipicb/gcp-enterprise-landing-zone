@@ -1,9 +1,25 @@
 # Terraform
-.terraform/
+**/.terraform/*
+terraform/providers/
 *.tfstate
 *.tfstate.*
-.terraform.lock.hcl
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Keep provider lock file
+!.terraform.lock.hcl
 
 # Sensitive files
 keys/
 terraform.json
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
