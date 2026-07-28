@@ -30,3 +30,12 @@ module "firewall" {
   project_id   = var.project_id
   network_name = module.network.network_name
 }
+
+module "cloud_router" {
+  source = "./modules/cloud_router"
+
+  project_id   = var.project_id
+  region       = var.region
+  network_name = module.network.network_name
+  router_name  = var.router_name
+}
