@@ -48,3 +48,21 @@ module "cloud_nat" {
   router_name = module.cloud_router.router_name
   nat_name    = var.nat_name
 }
+
+module "bastion" {
+  source = "./modules/compute"
+
+  project_id   = var.project_id
+  zone         = var.zone
+  network_name = module.network.network_name
+  subnetwork   = "management-subnet"
+
+  instance_name = "bastion-host"
+  machine_type  = "e2-micro"
+
+  public_ip = true
+
+  tags = [
+    "management"
+  ]
+}

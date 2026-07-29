@@ -75,3 +75,24 @@ resource "google_compute_firewall" "allow_internal" {
 
   description = "Allow communication between internal subnets"
 }
+
+resource "google_compute_firewall" "allow_ssh_private" {
+  name    = "allow-ssh-private"
+  project = var.project_id
+  network = var.network_name
+
+  direction = "INGRESS"
+  priority  = 1000
+
+  source_ranges = [
+    "10.10.0.0/24"
+  ]
+
+  target_tags = ["private"]
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+  description = "Allow SSH from management subnet to private instances"
+}
