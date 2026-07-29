@@ -39,3 +39,12 @@ module "cloud_router" {
   network_name = module.network.network_name
   router_name  = var.router_name
 }
+
+module "cloud_nat" {
+  source = "./modules/cloud_nat"
+
+  project_id  = var.project_id
+  region      = var.region
+  router_name = module.cloud_router.router_name
+  nat_name    = var.nat_name
+}

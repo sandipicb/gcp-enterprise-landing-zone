@@ -25,3 +25,9 @@ variable "router_name" {
   type        = string
   default     = "enterprise-router"
 }
+
+variable "nat_name" {
+  description = "Cloud NAT name"
+  type        = string
+  default     = "enterprise-nat"
+}
