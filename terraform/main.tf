@@ -66,3 +66,41 @@ module "bastion" {
     "management"
   ]
 }
+
+module "application_vm" {
+  source = "./modules/compute"
+
+  project_id   = var.project_id
+  zone         = var.zone
+  network_name = module.network.network_name
+  subnetwork   = "application-subnet"
+
+  instance_name = "app-vm"
+  machine_type  = "e2-micro"
+
+  public_ip = false
+
+  tags = [
+    "private"
+  ]
+
+}
+
+module "database_vm" {
+  source = "./modules/compute"
+
+  project_id   = var.project_id
+  zone         = var.zone
+  network_name = module.network.network_name
+  subnetwork   = "database-subnet"
+
+  instance_name = "db-vm"
+  machine_type  = "e2-micro"
+
+  public_ip = false
+
+  tags = [
+    "private"
+  ]
+
+}
