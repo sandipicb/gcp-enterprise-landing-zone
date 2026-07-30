@@ -32,3 +32,8 @@ variable "public_ip" {
   type    = bool
   default = false
 }
+
+variable "service_account_email" {
+  description = "Service Account attached to the VM"
+  type        = string
+}

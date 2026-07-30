@@ -57,6 +57,8 @@ module "bastion" {
   network_name = module.network.network_name
   subnetwork   = "management-subnet"
 
+  service_account_email = module.iam.service_accounts["bastion-sa"]
+
   instance_name = "bastion-host"
   machine_type  = "e2-micro"
 
@@ -74,6 +76,8 @@ module "application_vm" {
   zone         = var.zone
   network_name = module.network.network_name
   subnetwork   = "application-subnet"
+
+  service_account_email = module.iam.service_accounts["app-sa"]
 
   instance_name = "app-vm"
   machine_type  = "e2-micro"
@@ -94,6 +98,8 @@ module "database_vm" {
   network_name = module.network.network_name
   subnetwork   = "database-subnet"
 
+  service_account_email = module.iam.service_accounts["database-sa"]
+
   instance_name = "db-vm"
   machine_type  = "e2-micro"
 
@@ -103,4 +109,45 @@ module "database_vm" {
     "private"
   ]
 
+}
+
+module "iam" {
+  source = "./modules/iam"
+
+  project_id = var.project_id
+
+  service_accounts = [
+    {
+      account_id   = "bastion-sa"
+      display_name = "Bastion Host Service Account"
+    },
+    {
+      account_id   = "app-sa"
+      display_name = "Application Service Account"
+    },
+    {
+      account_id   = "database-sa"
+      display_name = "Database Service Account"
+    },
+    {
+      account_id   = "monitoring-sa"
+      display_name = "Monitoring Service Account"
+    }
+  ]
+
+  iam_bindings = {
+    "roles/logging.logWriter" = [
+      "serviceAccount:bastion-sa@${var.project_id}.iam.gserviceaccount.com",
+      "serviceAccount:app-sa@${var.project_id}.iam.gserviceaccount.com",
+      "serviceAccount:database-sa@${var.project_id}.iam.gserviceaccount.com",
+      "serviceAccount:monitoring-sa@${var.project_id}.iam.gserviceaccount.com"
+    ]
+    "roles/monitoring.metricWriter" = [
+      "serviceAccount:bastion-sa@${var.project_id}.iam.gserviceaccount.com",
+      "serviceAccount:app-sa@${var.project_id}.iam.gserviceaccount.com",
+      "serviceAccount:database-sa@${var.project_id}.iam.gserviceaccount.com",
+      "serviceAccount:monitoring-sa@${var.project_id}.iam.gserviceaccount.com"
+
+    ]
+  }
 }

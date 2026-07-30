@@ -34,5 +34,14 @@ resource "google_compute_instance" "vm" {
     enable_integrity_monitoring = true
   }
 
+  service_account {
+    email = var.service_account_email
+
+    scopes = [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ]
+  }
+
+
   allow_stopping_for_update = true
 }
