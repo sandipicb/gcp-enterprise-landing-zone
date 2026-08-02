@@ -151,3 +151,29 @@ module "iam" {
     ]
   }
 }
+
+module "secret_manager" {
+  source = "./modules/secret_manager"
+
+  project_id = var.project_id
+
+  secrets = [
+    {
+      secret_id = "db-password"
+      value     = "ChangeMe123!"
+    },
+    {
+      secret_id = "app-api-key"
+      value     = "SampleAPIKey123456"
+    }
+  ]
+  secret_accessors = {
+    "db-password" = [
+      "serviceAccount:app-sa@${var.project_id}.iam.gserviceaccount.com"
+    ]
+
+    "app-api-key" = [
+      "serviceAccount:app-sa@${var.project_id}.iam.gserviceaccount.com"
+    ]
+  }
+}
