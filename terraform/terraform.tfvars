@@ -1,4 +1,4 @@
-project_id = "gcp-elz-123"
+project_id = "enterprise-landing-zone-504409"
 
 region = "us-central1"
 

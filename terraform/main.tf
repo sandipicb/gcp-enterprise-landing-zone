@@ -182,5 +182,5 @@ module "monitoring" {
   source = "./modules/monitoring"
 
   project_id         = var.project_id
-  notification_email = "sandipcloudtech@gmail.com"
+  notification_email = "sandipcloudeng@gmail.com"
 }

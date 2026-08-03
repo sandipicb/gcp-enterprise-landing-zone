@@ -1,6 +1,6 @@
 terraform {
   backend "gcs" {
-    bucket = "gcp-elz-123-tfstate"
+    bucket = "enterprise-landing-zone-504409-tfstate"
     prefix = "terraform/state"
   }
 }
