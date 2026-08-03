@@ -12,8 +12,8 @@ variable "secrets" {
   }))
 }
 
-variable "secret_accessors"{
-    description = "Map of secret IDs to service accounts allowed to access them"
+variable "secret_accessors" {
+  description = "Map of secret IDs to service accounts allowed to access them"
 
-    type = map(list(string))
+  type = map(list(string))
 }

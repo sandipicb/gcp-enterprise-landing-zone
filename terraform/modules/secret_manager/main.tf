@@ -28,23 +28,23 @@ resource "google_secret_manager_secret_version" "versions" {
 }
 
 resource "google_secret_manager_secret_iam_member" "accessors" {
-    for_each = {
-        for pair in flatten([
-            for secret, member in   var.secret_accessors : [
-                for member in member : {
-                    secret = secret
-                    member    = member
-                    key      = "${secret}-${member}"
-                }
-            ]
-        ]):
-        pair.key => pair
-    }
-    project = var.project_id    
+  for_each = {
+    for pair in flatten([
+      for secret, member in var.secret_accessors : [
+        for member in member : {
+          secret = secret
+          member = member
+          key    = "${secret}-${member}"
+        }
+      ]
+    ]) :
+    pair.key => pair
+  }
+  project = var.project_id
 
-    secret_id = google_secret_manager_secret.secrets[each.value.secret].secret_id
-    role      = "roles/secretmanager.secretAccessor"
-    member    = each.value.member   
+  secret_id = google_secret_manager_secret.secrets[each.value.secret].secret_id
+  role      = "roles/secretmanager.secretAccessor"
+  member    = each.value.member
 }
 
     
