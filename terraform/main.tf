@@ -188,11 +188,7 @@ module "monitoring" {
 module "storage" {
   source = "./modules/storage"
 
-  project_id  = var.project_id
-  bucket_name = var.storage_bucket_name
-
-  labels = {
-    environment = "lab"
-    managed_by  = "terraform"
-  }
+  project_id = var.project_id
+  buckets    = var.storage_buckets
+  bucket_iam = var.bucket_iam
 }
