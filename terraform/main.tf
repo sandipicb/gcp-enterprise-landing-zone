@@ -184,3 +184,15 @@ module "monitoring" {
   project_id         = var.project_id
   notification_email = "sandipcloudeng@gmail.com"
 }
+
+module "storage" {
+  source = "./modules/storage"
+
+  project_id  = var.project_id
+  bucket_name = var.storage_bucket_name
+
+  labels = {
+    environment = "lab"
+    managed_by  = "terraform"
+  }
+}
