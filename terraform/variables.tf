@@ -32,3 +32,7 @@ variable "nat_name" {
   default     = "enterprise-nat"
 }
 
+variable "storage_bucket_name" {
+  type = string
+}
+
