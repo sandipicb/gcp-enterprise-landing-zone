@@ -1,8 +1,17 @@
 variable "project_id" {
     type = string
 }
-variable "bucket_name" {
-    type = string
+variable "buckets" {
+   description = "Storage of bucket configuration"
+
+    type = map(object({
+          location = string
+          storage_class = string
+          enable_versioning = bool
+          lifecycle_age = number
+          force_destroy = bool
+          labels = map(string)
+     }))
 }
 variable "location" {
     type = string
@@ -21,4 +30,14 @@ variable "labels" {
     default = {}
 }
 
+variable "bucket_iam" {
+  description = "Bucket IAM assignments"
+
+  type = map(list(object({
+    role   = string
+    member = string
+  })))
+
+  default = {}
+}
 
