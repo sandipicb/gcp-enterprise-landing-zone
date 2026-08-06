@@ -53,3 +53,26 @@ variable "bucket_iam" {
 
   default = {}
 }
+
+variable "dns_zone_name" {
+  description = "Cloud DNS Managed zone name"
+  type        = string
+}
+
+variable "dns_name" {
+  description = "DNS Name (must end with a dot)"
+  type        = string
+}
+
+variable "dns_records" {
+  description = "DNS Records"
+
+  type = map(object({
+    name    = string
+    type    = string
+    ttl     = number
+    rrdatas = list(string)
+  }))
+
+  default = {}
+}

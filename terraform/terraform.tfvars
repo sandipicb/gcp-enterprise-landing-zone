@@ -85,5 +85,24 @@ bucket_iam = {
       member = "serviceAccount:database-sa@enterprise-landing-zone-504409.iam.gserviceaccount.com"
     }
   ]
+}
 
+dns_zone_name = "enterprise-zone"
+
+dns_name = "example.com."
+
+dns_records = {
+  root = {
+    name    = "example.com."
+    type    = "A"
+    ttl     = 300
+    rrdatas = ["1.1.1.1"]
+  }
+
+  www = {
+    name    = "www.example.com."
+    type    = "A"
+    ttl     = 300
+    rrdatas = ["1.1.1.1"]
+  }
 }

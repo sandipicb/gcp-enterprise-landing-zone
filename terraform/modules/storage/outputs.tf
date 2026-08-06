@@ -1,23 +1,23 @@
 output "bucket_names" {
-  description = "Names of all storage buckets"  
+  description = "Names of all storage buckets"
 
   value = {
-    for name, bucket in google_storage_bucket.bucket : 
+    for name, bucket in google_storage_bucket.bucket :
     name => bucket.name
   }
 }
 
-output "bucket_urls"{
+output "bucket_urls" {
   description = "URLs of all storage buckets"
   value = {
-    for name, bucket in google_storage_bucket.bucket : 
+    for name, bucket in google_storage_bucket.bucket :
     name => bucket.url
   }
 }
 output "bucket_self_link" {
   description = "Self links of all storage buckets"
   value = {
-    for name, bucket in google_storage_bucket.bucket : 
+    for name, bucket in google_storage_bucket.bucket :
     name => bucket.self_link
   }
 }
