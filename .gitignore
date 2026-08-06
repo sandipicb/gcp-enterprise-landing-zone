@@ -14,6 +14,8 @@ override.tf.json
 
 # Sensitive files
 keys/
+*.pem
+*.key
 terraform.json
 
 # IDE
@@ -23,3 +25,6 @@ terraform.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Environment
+.env
