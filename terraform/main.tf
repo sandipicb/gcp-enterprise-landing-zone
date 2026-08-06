@@ -192,3 +192,14 @@ module "storage" {
   buckets    = var.storage_buckets
   bucket_iam = var.bucket_iam
 }
+
+module "dns" {
+  source = "./modules/dns"
+
+  project_id = var.project_id
+
+  zone_name = var.dns_zone_name
+  dns_name  = "var.dns_name"
+
+  records = var.dns_records
+}
