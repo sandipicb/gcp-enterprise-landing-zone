@@ -193,13 +193,9 @@ module "storage" {
   bucket_iam = var.bucket_iam
 }
 
-module "dns" {
-  source = "./modules/dns"
+module "global_ip" {
+  source = "./modules/global_ip"
 
   project_id = var.project_id
-
-  zone_name = var.dns_zone_name
-  dns_name  = "var.dns_name"
-
-  records = var.dns_records
+  addresses  = var.global_addresses
 }

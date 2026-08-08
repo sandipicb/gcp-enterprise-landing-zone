@@ -86,23 +86,9 @@ bucket_iam = {
     }
   ]
 }
-
-dns_zone_name = "enterprise-zone"
-
-dns_name = "example.com."
-
-dns_records = {
-  root = {
-    name    = "example.com."
-    type    = "A"
-    ttl     = 300
-    rrdatas = ["1.1.1.1"]
-  }
-
-  www = {
-    name    = "www.example.com."
-    type    = "A"
-    ttl     = 300
-    rrdatas = ["1.1.1.1"]
+global_addresses = {
+  "enterprise-lb-ip" = {
+    description = "Global IP for Landing Zone HTTPS Load Balancer"
+    ip_version  = "IPV4"
   }
 }
