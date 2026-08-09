@@ -199,3 +199,17 @@ module "global_ip" {
   project_id = var.project_id
   addresses  = var.global_addresses
 }
+module "load_balancer" {
+  source = "./modules/load_balancer"
+
+  project_id = var.project_id
+  region     = var.region
+  zone       = var.zone
+
+  network_name = module.network.network_name
+
+  global_ip_address = module.global_ip.addresses["enterprise-lb-ip"]
+
+  backend_instance = "app-vm"
+  backend_zone     = var.zone
+}

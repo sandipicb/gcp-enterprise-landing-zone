@@ -96,3 +96,46 @@ resource "google_compute_firewall" "allow_ssh_private" {
   }
   description = "Allow SSH from management subnet to private instances"
 }
+
+resource "google_compute_firewall" "allow_iap_ssh" {
+  name    = "allow-iap-ssh"
+  project = var.project_id
+  network = var.network_name
+
+  direction = "INGRESS"
+  priority  = 1000
+
+  source_ranges = [
+    "35.235.240.0/20"
+  ]
+
+  target_tags = ["private"]
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+  description = "Allow IAP SSH access to private instances through IAP"
+}
+
+resource "google_compute_firewall" "allow_lb_health_check" {
+  name    = "allow-lb-health-check"
+  project = var.project_id
+  network = var.network_name
+
+  direction = "INGRESS"
+  priority  = 1000
+
+  source_ranges = [
+    "35.191.0.0/16",
+    "130.211.0.0/22"
+  ]
+
+  target_tags = ["private"]
+
+  allow {
+    protocol = "tcp"
+    ports    = ["80"]
+  }
+  description = "Allow Google Cloud Load Balancer health checks to private application instances"
+}
