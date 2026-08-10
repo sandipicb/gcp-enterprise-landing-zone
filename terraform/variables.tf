@@ -75,3 +75,8 @@ variable "global_addresses" {
     ip_version  = string
   }))
 }
+
+variable "load_balancer_domain" {
+  description = "Domain name for HTTPS load balancer"
+  type        = string
+}

@@ -212,4 +212,6 @@ module "load_balancer" {
 
   backend_instance = "app-vm"
   backend_zone     = var.zone
+
+  domain = var.load_balancer_domain
 }

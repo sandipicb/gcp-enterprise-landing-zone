@@ -32,3 +32,8 @@ variable "backend_zone" {
   description = " Backend VM zone"
   type        = string
 }
+
+variable "domain" {
+  description = "Domain name for the Google-managed SSL certificate"
+  type        = string
+}

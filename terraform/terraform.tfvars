@@ -4,6 +4,8 @@ region = "us-central1"
 
 network_name = "enterprise-vpc"
 
+load_balancer_domain = "elz.sandipchakroborty.com"
+
 zone = "us-central1-a"
 
 storage_buckets = {
