@@ -18,8 +18,8 @@ variable "network_name" {
   type        = string
 }
 
-variable "global_ip_name" {
-  description = "Existing global IP name"
+variable "global_ip_address" {
+  description = "Existing reserved global IP address"
   type        = string
 }
 
@@ -31,9 +31,4 @@ variable "backend_instance" {
 variable "backend_zone" {
   description = " Backend VM zone"
   type        = string
-}
-
-variable "global_ip_address" {
-    description = "Existing reserved global IP address"
-    type        = string
 }
