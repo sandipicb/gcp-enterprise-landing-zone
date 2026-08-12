@@ -18,6 +18,8 @@ keys/
 *.pem
 *.key
 terraform.json
+*.tfvars
+!terraform.tfvars.example
 
 # IDE
 .vscode/

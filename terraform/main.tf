@@ -160,11 +160,11 @@ module "secret_manager" {
   secrets = [
     {
       secret_id = "db-password"
-      value     = "REMOVED_SECRET"
+      value     = var.db_password
     },
     {
       secret_id = "app-api-key"
-      value     = "REMOVED_SECRET"
+      value     = var.app_api_key
     }
   ]
   secret_accessors = {

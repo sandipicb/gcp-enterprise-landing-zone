@@ -80,3 +80,15 @@ variable "load_balancer_domain" {
   description = "Domain name for HTTPS load balancer"
   type        = string
 }
+
+variable "db_password" {
+  description = "Database password"
+  type        = string
+  sensitive   = true
+}
+
+variable "app_api_key" {
+  description = "Application API key"
+  type        = string
+  sensitive   = true
+}

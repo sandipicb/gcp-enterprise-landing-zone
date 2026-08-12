@@ -1,0 +1,8 @@
+project_id           = "enterprise-landing-zone-504409"
+region               = "us-central1"
+network_name         = "enterprise-vpc"
+load_balancer_domain = "elz.sandipchakroborty.com"
+zone                 = "us-central1-a"
+
+db_password = "CHANGE_ME"
+app_api_key = "CHANGE_ME"
