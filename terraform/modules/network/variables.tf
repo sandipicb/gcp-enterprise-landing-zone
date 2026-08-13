@@ -8,11 +8,6 @@ variable "project_id" {
   type        = string
 }
 
-variable "region" {
-  description = "Deployment region."
-  type        = string
-}
-
 variable "subnets" {
   description = "List of subnets."
   type = list(object({

@@ -40,4 +40,4 @@ jobs:
         run: terraform validate
 
       - name: Terraform Apply
-        run: terraform apply -var-file=github-actions.tfvars -auto-approve
+        run:  terraform apply -auto-approve

@@ -5,6 +5,8 @@ output "firewall_rules" {
     google_compute_firewall.allow_http.name,
     google_compute_firewall.allow_https.name,
     google_compute_firewall.allow_internal.name,
-    google_compute_firewall.allow_ssh_private.name
+    google_compute_firewall.allow_ssh_private.name,
+    google_compute_firewall.allow_iap_ssh.name,
+    google_compute_firewall.allow_lb_health_check.name
   ]
 }

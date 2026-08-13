@@ -31,4 +31,3 @@ Thumbs.db
 
 # Environment
 .env
-!terraform/github-actions.tfvars
