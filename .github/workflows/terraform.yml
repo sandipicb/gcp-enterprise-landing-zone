@@ -18,6 +18,10 @@ jobs:
     name: Terraform Validation
     runs-on: ubuntu-latest
 
+    env:
+      TF_VAR_db_password: ${{ secrets.TF_VAR_DB_PASSWORD }}
+      TF_VAR_app_api_key: ${{ secrets.TF_VAR_APP_API_KEY }}
+
     defaults:
       run:
         working-directory: terraform
