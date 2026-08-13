@@ -19,7 +19,7 @@ keys/
 *.key
 terraform.json
 *.tfvars
-!terraform.tfvars.example
+!terraform/terraform.tfvars.example
 
 # IDE
 .vscode/
@@ -31,3 +31,4 @@ Thumbs.db
 
 # Environment
 .env
+!terraform/github-actions.tfvars
