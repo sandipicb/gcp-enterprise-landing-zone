@@ -53,7 +53,7 @@ resource "google_monitoring_dashboard" "landing_zone_dashboard" {
             xyChart = {
               dataSets = [
                 {
-                  plotType  = "LINE"
+                  plotType   = "LINE"
                   targetAxis = "Y1"
 
                   timeSeriesQuery = {
