@@ -53,6 +53,9 @@ resource "google_monitoring_dashboard" "landing_zone_dashboard" {
             xyChart = {
               dataSets = [
                 {
+                  plotType  = "LINE"
+                  targetAxis = "Y1"
+
                   timeSeriesQuery = {
                     timeSeriesFilter = {
                       filter = "metric.type=\"compute.googleapis.com/instance/cpu/utilization\" AND resource.type=\"gce_instance\""
@@ -76,6 +79,9 @@ resource "google_monitoring_dashboard" "landing_zone_dashboard" {
             xyChart = {
               dataSets = [
                 {
+                  plotType   = "LINE"
+                  targetAxis = "Y1"
+
                   timeSeriesQuery = {
                     timeSeriesFilter = {
                       filter = "metric.type=\"compute.googleapis.com/instance/network/received_bytes_count\" AND resource.type=\"gce_instance\""

@@ -1,23 +1,3 @@
-resource "google_compute_firewall" "allow_ssh" {
-  name    = "allow-ssh-management"
-  project = var.project_id
-  network = var.network_name
-
-  direction = "INGRESS"
-  priority  = 1000
-
-  source_ranges = ["0.0.0.0/0"]
-  target_tags   = ["management"]
-
-  allow {
-    protocol = "tcp"
-    ports    = ["22"]
-
-  }
-
-  description = "Allow SSH access to management instances"
-}
-
 resource "google_compute_firewall" "allow_http" {
   name    = "allow-http"
   project = var.project_id
