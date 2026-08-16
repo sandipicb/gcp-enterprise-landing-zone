@@ -77,7 +77,7 @@ bucket_iam = {
 
   "enterprise-landing-zone-504409-backups" = [
     {
-      role   = "roles/storage.objectViewer"
+      role   = "roles/storage.objectAdmin"
       member = "serviceAccount:database-sa@enterprise-landing-zone-504409.iam.gserviceaccount.com"
     }
 
