@@ -20,6 +20,7 @@ keys/
 terraform.json
 *.tfvars
 !terraform/terraform.tfvars.example
+!terraform/ci.tfvars
 
 # IDE
 .vscode/
