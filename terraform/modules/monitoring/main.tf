@@ -111,3 +111,33 @@ resource "google_logging_metric" "vm_errors" {
     display_name = "VM Error Count"
   }
 }
+
+resource "google_monitoring_alert_policy" "vm_errors" {
+  project      = var.project_id
+  display_name = "GCE VM Error Logs"
+
+  combiner = "OR"
+
+  conditions {
+    display_name = "VM error count > 0"
+
+    condition_threshold {
+      filter          = "metric.type=\"logging.googleapis.com/user/${google_logging_metric.vm_errors.name}\" AND resource.type=\"gce_instance\""
+      comparison      = "COMPARISON_GT"
+      threshold_value = 0
+      duration        = "60s"
+
+      aggregations {
+        alignment_period   = "60s"
+        per_series_aligner = "ALIGN_SUM"
+
+      }
+    }
+  }
+  notification_channels = [
+    google_monitoring_notification_channel.email.id
+  ]
+
+  enabled = true
+
+}
